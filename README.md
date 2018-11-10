@@ -1,6 +1,6 @@
 ## Get source
 ````
-git clone https://github.com/id1945/validator-directive-appTestName.git
+git clone https://github.com/id1945/validator-test-name-directive-angular-2.git
 npm install
 npm start
 ````
