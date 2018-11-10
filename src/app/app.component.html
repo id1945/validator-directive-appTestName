@@ -1,0 +1,36 @@
+<div class="jumbotron">
+  <div class="container">
+
+    <div class="col-md-6 offset-md-3">
+      <h4>Custom validator for template driven forms validation</h4>
+      <hr class="my-4">
+
+      <form #form="ngForm" (ngSubmit)="form.valid && onSubmit(form.value)">
+        <div class="form-group">
+          <label for="my-input">Firstname:</label>
+          <input type="text" #firstname="ngModel" ngModel appTestName name="firstname" required class="form-control" />
+          <div *ngIf="firstname.errors && (firstname.dirty || firstname.touched || form.submitted)" class="text-danger">
+            <p *ngIf="firstname.errors.required">
+              The name is required
+            </p>
+            <p *ngIf="firstname.errors.checkFirstName">
+              Only allowed name is "TestName"
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success mr-2">Submit</button>
+          <button type="reset" (click)="onReset($event, form)" class="btn btn-danger">reset</button>
+        </div>
+      </form>
+
+      <div class="alert alert-primary">
+        <pre>Is form valid: <br>{{form.valid | json}}</pre>
+        <pre>Is form submitted: <br>{{form.submitted | json}}</pre>
+        <pre>form value: <br>{{form.value | json}}</pre>
+        <pre>firstname.errors: <br>{{firstname.errors | json}}</pre>
+      </div>
+
+    </div>
+  </div>
+</div>
